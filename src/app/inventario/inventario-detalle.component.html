@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+           {{titulo}}
+        </div>
+        <div class="card-block">
+            <form class="novalidate" [formGroup]="form">
+                <div class="form-group">
+                    <label for="id">Id</label>
+                    <input type="number" class="form-control" id="id" formControlName="id">
+                    <div *ngIf="form.controls.id.errors && form.controls.id.touched">
+                        <div *ngIf="form.controls.id.errors.required" class="alert alert-danger">
+                            El campo es requerido
+                        </div>
+                        <div *ngIf="form.controls.id.errors.valorUnico" class="alert alert-danger">
+                            El id ingresado ya existe en la base de datos
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="producto">Producto</label>
+                    <input type="text" class="form-control" id="producto" formControlName="producto">
+                    <div *ngIf="form.controls.producto.errors && form.controls.producto.touched">
+                        <div *ngIf="form.controls.producto.errors.required" class="alert alert-danger">
+                            El campo es requerido
+                        </div>
+                        <div *ngIf="form.controls.producto.errors.maxlength" class="alert alert-danger">
+                            El nombre solo puede tener 10 caracteres
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="existencia">Existencia</label>
+                    <input type="number" class="form-control" id="existencia" formControlName="existencia">
+                    <div *ngIf="form.controls.existencia.errors && form.controls.existencia.touched">
+                        <div *ngIf="form.controls.existencia.errors.required" class="alert alert-danger">
+                            El campo es requerido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" id="precio" formControlName="precio">
+                    <div *ngIf="form.controls.precio.errors && form.controls.precio.touched">
+                        <div *ngIf="form.controls.precio.errors.required" class="alert alert-danger">
+                            El campo es requerido
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="proveedor">Proveedor</label>
+                    <input type="text" class="form-control" id="proveedor" formControlName="proveedor">
+                    <div *ngIf="form.controls.proveedor.errors && form.controls.proveedor.touched">
+                        <div *ngIf="form.controls.proveedor.errors.required" class="alert alert-danger">
+                            El campo es requerido
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" (click)="guardarInventario()" [disabled]="!form.valid">Guardar</button>
+                <button class="btn btn-default" (click)="limpiarFormulario()">Limpiar</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>
